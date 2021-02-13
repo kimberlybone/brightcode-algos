@@ -30,19 +30,19 @@ let obj = {
         //// DO NOT NEED TO EDIT ////
     },
     binaryRecursive:function(arr, valueToFind, startIndex=0, endIndex=arr.length-1){
-        console.log("Current array elements: ", arr.slice(startIndex, endIndex + 1))
+        console.log("Current array elements: ", arr.slice(startIndex, endIndex + 1)) // Helpful printing to see what the current array elements are in this method call
 
         if( startIndex > endIndex ){
             return -1
         }
-        let midIndex = Math.floor( (startIndex+endIndex)/2 )
+        let midIndex = Math.floor( (startIndex+endIndex)/2 ) // Find the middle index
 
         if( valueToFind === arr[midIndex] ){
             return midIndex
         } else if( valueToFind > arr[midIndex] ){
-            return this.binaryRecursive( arr, valueToFind, midIndex + 1, endIndex )
+            return this.binaryRecursive( arr, valueToFind, midIndex + 1, endIndex ) // Recursive call setting new start index and end index values
         } else if( valueToFind < arr[midIndex] ){
-            return this.binaryRecursive( arr, valueToFind, startIndex, midIndex - 1 )
+            return this.binaryRecursive( arr, valueToFind, startIndex, midIndex - 1 ) // Recursive call setting start index and new end index values
         }
     },
     binaryIterative:function(arr, valueToFind){
@@ -51,7 +51,7 @@ let obj = {
 
         while(startIndex <= endIndex){
             console.log("Current array elements: ", arr.slice(startIndex, endIndex + 1))
-            let midIndex = Math.floor((startIndex + endIndex) / 2)
+            let midIndex = Math.floor((startIndex + endIndex) / 2) // Find the middle index
             if(valueToFind === arr[midIndex]){
                 return midIndex
             } else if(valueToFind > arr[midIndex]){
