@@ -1,5 +1,5 @@
 let obj = {
-    valueToSearchFor: 200,
+    valueToSearchFor: 400,
     sortedArr: [10, 50, 200, 230, 400, 530, 720],
     unSortedArr: [1000, 50, 200, 850, 430, 230],
     init:function(){
@@ -62,8 +62,18 @@ let obj = {
         }
         return -1
     },
-    exponentialIterative:function(){
+    exponentialIterative:function(arr, valueToFind){
+        let startIndex = 1
+        let i = startIndex*2
 
+        if(arr[0]===valueToFind){
+            return 0
+        }
+        let i = 1
+        while(i<arr.length && arr[i]<= valueToFind ){
+            i*=2 
+        }
+        return this.binaryRecursive(arr, valueToFind, i/2, Math.min(i, arr.length-1))
     },
     exponentialRecursive:function(){
 
@@ -71,11 +81,33 @@ let obj = {
     linearRecursive:function(){
 
     },
-    linearIterative:function(){
-
+    linearIterative:function(arr, valueToFind){
+        for(let i=0; i<arr.length; i++){
+            if( arr[i] === valueToFind ){
+                return i
+            }
+        }
+        return -1
     },
-    jumpIterative:function(){
+    jumpIterative:function(arr, valueToFind){
+        let step = Math.floor(Math.sqrt(arr.length))-1
+        let startIndex = 0
+        let endIndex = step
 
+        while(valueToFind > arr[startIndex]){
+            start += step
+            end += step
+            if(start > arr.length){
+                return -1
+            }
+        }
+        let min = Math.min(end, arr.length)
+        for(let i=start;i<min;i++){
+            if(valueToFind===arr[i]){
+                return i
+            }
+        }
+        return -1
     },
     interpolationIterative:function() {
 
